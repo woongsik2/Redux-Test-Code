@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Col, FormGroup, Input, Button, Label } from 'reactstrap';
+
+import toastr from 'toastr';
+import 'toastr/build/toastr.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class InputText extends Component {
@@ -30,11 +33,27 @@ class InputText extends Component {
     }
 
     onChangeText(t) {
+        toastr.options = {
+            closeButton: true,
+            showMethod: 'fadeIn',
+            onclick: () => {console.log("click!!")}
+        }
+        toastr.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        toastr.error("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        toastr.warning("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        toastr.success("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
         const text = this.input.value;
+        console.time("test")
+        if(text.length === 0){
+            toastr.error("Null Text!!")
+            return;
+        }
         // const node = findDOMNode(this.refs.input);
         // const text = node.value.trim();
         console.log("onChangeText : " + text)
         this.props.onSetChangeText(text);
+        console.timeEnd("test")
     }
 }
 

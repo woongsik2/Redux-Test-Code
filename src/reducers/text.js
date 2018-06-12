@@ -4,10 +4,12 @@ const initialState = {
     text: "default"
 }
 
-const text = (state = initialState, action) => {
+function text(state = initialState, action) {
+    console.log("action1", action)
     switch (action.type) {
         case types.SET_CHANGE_TEXT:
             state.text = action.text;
+            console.log("text",state.text)
             return {
                 text: state.text
             }

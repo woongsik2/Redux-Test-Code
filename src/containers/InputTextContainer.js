@@ -10,8 +10,8 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 // store 안의 state 값을 props로 연결
-const mapStateToProps = (state) => ({
-    text: state.textData.text
+const mapStateToProps = (state) => (console.log("state1",state),{
+    text: state.text
 });
 
 /**
@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch) => ({
     onSetChangeText: (text) => dispatch(actions.setChangeText(text))
 });
 
-// Counter 컴포넌트의 Container 컴포넌트
-// Counter 컴포넌트를 어플리케이션의 데이터 레이어와 묶는 역할을 한다.
+// InputText 컴포넌트의 Container 컴포넌트
+// InputText 컴포넌트를 어플리케이션의 데이터 레이어와 묶는 역할을 한다.
 
 const InputTextContainer = connect(
     mapStateToProps,
